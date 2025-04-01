@@ -1,26 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EW22YE9GT6"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EW22YE9GT6');
+
+    gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+        });
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yeeps.dev</title>
+    <script src="https://kit.fontawesome.com/ec195d0755.js" crossorigin="anonymous"></script>
     <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --container-bg: white;
+            --link-color: #007BFF;
+            --button-bg: #007BFF;
+            --button-hover-bg: #0056b3;
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #1e1e1e;
+            --text-color: #f4f4f4;
+            --container-bg: #333;
+            --link-color: #66b2ff;
+            --button-bg: #66b2ff;
+            --button-hover-bg: #4488cc;
+        }
+        
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
-            padding: 50px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        body.no-transition {
+            transition: none !important;
+        }
+
         .container {
-            background: white;
-            padding: 20px;
+            background: var(--container-bg);
+            padding: 40px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 50%;
+            min-width: 300px;
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        .no-transition {
+            transition: none !important;
+        }
+
         h1 {
-            color: #333;
+            color: var(--text-color);
         }
         .nav-links {
             margin-top: 20px;
@@ -29,24 +84,157 @@
             display: block;
             margin: 10px 0;
             text-decoration: none;
-            color: #007BFF;
+            color: var(--link-color);
             font-size: 18px;
         }
         .nav-links a:hover {
             text-decoration: underline;
         }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .footer a {
+            color: var(--link-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+            padding: 10px;
+        }
+        .wrapper{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 365px;
+            background: var(--container-bg);
+            padding: 25px 25px 30px 25px;
+            border-radius: 15px;
+            box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.15);
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .wrapper.hide{
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+        .buttons button{
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
+            background: var(--button-bg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .buttons button:hover{
+            background: var(--button-hover-bg);
+            transform: scale(0.97);
+        }
+        .buttons .item{
+            margin: 0 10px;
+        }
+        .buttons a{
+            color: var(--link-color);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <i id="theme-toggle" class="fa-solid fa-sun theme-toggle" onclick="toggleTheme()"></i>
+    <div id="center-box" class="container no-transition">
         <h1>Welcome to Yeeps.dev</h1>
         <p>Explore the different pages:</p>
         <div class="nav-links">
             <a href="https://yeeps.com">Official Yeeps Website</a>
             <a href="https://wiki.yeeps.dev">Yeeps Wiki</a>
             <a href="https://moon-team.yeeps.dev">Yeeps Moon Team</a>
+            <a href="https://wiring.yeeps.dev">Yeeps Redstone</a>
             <a href="mailto:angryfool@duck.com">Contact</a>
         </div>
     </div>
+    <div class="footer">
+        <p>Contact us on <a href="https://discord.gg/yourserver">Discord</a> or via <a href="mailto:angryfool@duck.com">Email</a></p>
+    </div>
+    <div class="wrapper hide">
+        <div class="content">
+          <header>Cookies Consent</header>
+          <p>This website uses cookies to ensure you get the best experience.</p>
+          <div class="buttons">
+            <button class="item" onclick="acceptCookies()">I understand</button>
+            <a href="#" class="item">Learn more</a>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const themeIcon = document.getElementById('theme-toggle');
+            if (newTheme === 'dark') {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
+        function acceptCookies() {
+            document.cookie = 'CookieBy=Accepted; max-age=' + 60 * 60 * 24 * 30;
+            document.querySelector('.wrapper').classList.add('hide');
+
+            gtag('consent', 'update', {
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted',
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted'
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let cookieConsent = document.cookie.indexOf("CookieBy=Accepted") !== -1;
+            if (cookieConsent) {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+
+                const themeIcon = document.getElementById('theme-toggle');
+                if (savedTheme === 'dark') {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+            } else {
+                document.querySelector('.wrapper').classList.remove('hide');
+            }
+
+            document.body.classList.add('no-transition');
+
+            setTimeout(() => {
+                document.body.classList.remove('no-transition');
+                document.getElementById('center-box').classList.remove('no-transition');
+            }, 1000);nd
+        });
+    </script>
 </body>
 </html>
