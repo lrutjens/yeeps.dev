@@ -61,13 +61,14 @@
 
         .container {
             background: var(--container-bg);
-            padding: 40px;
+            padding: 10px !important;
             border-radius: 10px;
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
             width: 50%;
             min-width: 300px;
             transition: background-color 0.3s, color 0.3s;
+            height: 70%;
         }
 
         .no-transition {
@@ -78,7 +79,7 @@
             color: var(--text-color);
         }
         .nav-links {
-            margin-top: 20px;
+            margin-top: 5px;
         }
         .nav-links a {
             display: block;
@@ -152,18 +153,66 @@
         .buttons a{
             color: var(--link-color);
         }
+        .round-image {
+            border-radius: 0.5rem !important;
+            width: 55% !important;
+        }
+        .cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            width: 70%;
+        }
+
+        .card-link {
+            flex: 1;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
     <i id="theme-toggle" class="fa-solid fa-sun theme-toggle" onclick="toggleTheme()"></i>
-    <div id="center-box" class="container no-transition">
+    <div id="center-box" class="container no-transition" style="justify-content: center !important;">
         <h1>Welcome to Yeeps.dev</h1>
         <p>Explore the different pages:</p>
         <div class="nav-links">
-            <a href="https://yeeps.com">Official Yeeps Website</a>
-            <a href="https://wiki.yeeps.dev">Yeeps Wiki</a>
-            <a href="https://moon-team.yeeps.dev">Yeeps Moon Team</a>
-            <a href="https://wiring.yeeps.dev">Yeeps Redstone</a>
+            <div class="cards">
+    <div class="row">
+        <div class="card-link">
+            <a href="https://yeeps.com">Official Yeeps Website<br>
+                <img alt="Yeeps Logo" class="round-image" loading="lazy" src="assets/yeeps-logo.jpg">
+            </a>
+        </div>
+        <div class="card-link">
+            <a href="https://wiki.yeeps.dev">Yeeps Wiki<br>
+                <img alt="Yeeps Wiki" class="round-image" loading="lazy" src="assets/wiki-logo.png">
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-link">
+            <a href="https://moon-team.yeeps.dev">Yeeps Moon Team<br>
+                <img alt="Yeeps Moon" class="round-image" loading="lazy" src="assets/moon-logo.png">
+            </a>
+        </div>
+        <div class="card-link">
+            <a href="https://wiring.yeeps.dev">Yeeps Redstone<br>
+                <img alt="Yeeps wiring" class="round-image" loading="lazy" src="assets/redstone-logo.png">
+            </a>
+        </div>
+    </div>
+</div>
+
+                       
+                    
+                        
         </div>
     </div>
     <div class="footer">
